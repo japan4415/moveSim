@@ -29,7 +29,7 @@ class Dive:
 
 
 
-    def checkEye(eye,target,degreeType,self):
+    def checkEye(self,eye,target,degreeType):
         eToT = np.array((eye[0]-target[0],eye[1]-target[1]))
         eToC = np.array((math.cos(degreeType * self.agentEyeAngle),math.sin(degreeType * self.agentEyeAngle)))
         dot = np.dot(eToT,eToC)
