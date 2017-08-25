@@ -1,7 +1,9 @@
 import moveSim
 import numpy as np
 
-testDive = moveSim.Dive()
+agentNumber = 1
+
+testDive = moveSim.Dive(agentNumber)
 print(testDive.checkEye([0,0],[1,0],2))
 testDive.makeField()
 a,b,c = testDive.getMove([[0,1]])

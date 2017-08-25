@@ -4,8 +4,8 @@ import math
 
 class Dive:
     
-    def __init__(self):
-        self.agentNumber = 1
+    def __init__(self,agentNumber):
+        self.agentNumber = agentNumber
         self.fieldX = 100
         self.fieldY = 100
         self.agentEye = 10
