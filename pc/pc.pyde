@@ -11,10 +11,13 @@ xg = 0
 yg = 0
 s = 0
 r = 30
+step = 0
 agentNumber = 1
 fieldSize = 100
 agentAry = []
 goalAry = []
+
+agentAryAry = []
 
 f = open("agentAry.csv","r")
 reader = csv.reader(f)
@@ -40,8 +43,56 @@ def setup():
     size(500, 500)
     noStroke()
     fill(255, 0, 0)
+    
+def openFile(step):
+    
+    global xa
+    global ya
+    global xg
+    global yg
+    global s
+    global agentAryAry
+    
 
+    f = open("../result/" + str(step) + "agentAry.csv","r")
+    reader = csv.reader(f)
+    agentAryAry.append([])
+    for row in reader:
+        agentAryAry[step].append(row)
+    f.close
 
+    for i,agent in enumerate(agentAryAry[step]):
+        xa = int(agent[0])
+        ya = int(agent[1])
+        s = int(agent[2]) * r
+        xg = int(agentAryAry[step][i][0])
+        yg = int(agentAryAry[step][i][1])
+    
+    
+def draw():
+    global i
+    global xa
+    global ya
+    global xg
+    global yg
+    global s
+    global step
+    
+    openFile(step)
+    
+
+    
+    background(0)
+    fill(0,255,0)
+    ellipse(xa,ya,5,5)
+    fill(255,0,0)
+    ellipse(xg,yg,5,5)
+    fill(0,255,0,50)
+    arc(xa,ya,500,500,radians(s-r/2),radians(s+r/2))
+    
+    step += 1
+
+'''
 def draw():
     global i
     global xa
@@ -67,7 +118,9 @@ def draw():
         xa = 500
     if ya < 0:
         ya = 500
-    saveFrame("frames/" + str(i) + ".tif")
+    #saveFrame("frames/" + str(i) + ".tif")
     i += 1
+    
+'''
     
 print(sys.executable)

@@ -17,7 +17,7 @@ class Dive:
         self.visionFieldAry = [np.zeros((self.fieldX,self.fieldY))] * self.agentNumber
         self.trueField = np.zeros((self.fieldX,self.fieldY))
 
-        self.finish = false
+        self.finish = False
         self.turn = 1
 
         self.reset()
@@ -32,7 +32,7 @@ class Dive:
                 self.goalAry[i] = [random.randint(0,self.fieldX-1),random.randint(0,self.fieldY)]
 
         self.turn = 1
-        self.finish = false
+        self.finish = False
 
     def checkEye(self,eye,target,degreeType):
         eToT = np.array((target[0]-eye[0],target[1]-eye[1]))
