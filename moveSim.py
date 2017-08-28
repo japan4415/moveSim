@@ -26,8 +26,8 @@ class Dive:
 
     def reset(self):
         for i in range(self.agentNumber):
-            self.agentAry[i] = [random.randint(0,self.fieldX-1),random.randint(0,self.fieldY),random.randint(0,360/self.agentEyeAngle-1)]
-            self.goalAry[i] = [random.randint(0,self.fieldX-1),random.randint(0,self.fieldY)]
+            self.agentAry[i] = [random.randint(0,self.fieldX-1),random.randint(0,self.fieldY-1),random.randint(0,360/self.agentEyeAngle-1)]
+            self.goalAry[i] = [random.randint(0,self.fieldX-1),random.randint(0,self.fieldY-1)]
             while self.agentAry[i][0] == self.goalAry[i][0] and self.agentAry[i][1] == self.goalAry[i][1]:
                 self.goalAry[i] = [random.randint(0,self.fieldX-1),random.randint(0,self.fieldY)]
 
@@ -92,6 +92,15 @@ class Dive:
                 self.agentAry[move[0]][0] -= 1
             elif move[1] % 5 == 4:
                 self.agentAry[move[0]][1] -= 1
+        for agent in agentAry:
+            if agent[0] == 100:
+                agent[0] = 0
+            elif agent[0] == -1:
+                agent[0] = 100
+            if agent[1] == 100:
+                agent[1] = 0
+            elif agent[1] == -1:
+                agent[1] = 100
         self.makeField()
         self.turn += 1
         return (self.visionFieldAry,self.trueField,self.culcReward())

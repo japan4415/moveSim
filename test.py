@@ -24,11 +24,10 @@ print(aa)
 #np.savetxt('agentEye.csv',a[0],delimiter=",")
 #np.savetxt('trueEye.csv',b,delimiter=",")
 np.savetxt('result/0agentAry.csv',aa,fmt="%.0f",delimiter=",")
-np.savetxt('result/0goalAry.csv',bb,fmt="%.0f",delimiter=",")
+np.savetxt('result/goalAry.csv',bb,fmt="%.0f",delimiter=",")
 
 for i in range(step):
     a,b,c = testDive.getMove([[0,1]])
     aa,bb = testDive.getAgentAry()
 
     np.savetxt("result/" + str(i) + 'agentAry.csv',aa,fmt="%.0f",delimiter=",")
-    np.savetxt("result/" + str(i) + 'goalAry.csv',aa,fmt="%.0f",delimiter=",")

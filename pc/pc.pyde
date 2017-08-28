@@ -19,11 +19,13 @@ goalAry = []
 
 agentAryAry = []
 
+'''
 f = open("agentAry.csv","r")
 reader = csv.reader(f)
 for row in reader:
     agentAry.append(row)
 f.close
+'''
 
 f = open("goalAry.csv","r")
 reader = csv.reader(f)
@@ -65,9 +67,6 @@ def openFile(step):
         xa = int(agent[0])
         ya = int(agent[1])
         s = int(agent[2]) * r
-        xg = int(agentAryAry[step][i][0])
-        yg = int(agentAryAry[step][i][1])
-    
     
 def draw():
     global i
@@ -77,10 +76,13 @@ def draw():
     global yg
     global s
     global step
+    global agentNumber
     
     openFile(step)
     
-
+    for i in range(agentNumber):
+        xg = int(goalAry[i][0])
+        yg = int(goalAry[i][1])
     
     background(0)
     fill(0,255,0)
@@ -88,7 +90,9 @@ def draw():
     fill(255,0,0)
     ellipse(xg,yg,5,5)
     fill(0,255,0,50)
-    arc(xa,ya,500,500,radians(s-r/2),radians(s+r/2))
+    arc(xa,ya,500,500,radians(s*r-r/2),radians(s*r+r/2))
+    
+    saveFrame("frames/" + str(step) + ".tif")
     
     step += 1
 
