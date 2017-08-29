@@ -52,8 +52,7 @@ agentAry = []
 for i in range(agentNumber):
     agentAry.append(DQNAgent(enableAction,envName+str(i)))
 
-#環境の初期状態の取得
-agentEyeAry,tField,rewardAry,finish = env.getMove([[0,1]])
+
 
 #学習中に使う変数宣言
 epoch = 0
@@ -62,34 +61,48 @@ epoch = 0
 maxEpoch = 100000
 
 for i in range(maxEpoch):
+
+    #環境の初期化
+    env.reset()
+    shutil.rmtree("result")
+    os.mkdir("result")
+    turnCount = 0
+
+    #環境の初期状態の取得
+    agentEyeAry,tField,rewardAry,finish = env.getMove([[0,1]])
+
     print("epoch:" + str(i))
 
-    #前回の結果を避ける
-    prevAgentEyeAry = agentEyeAry
-    prevTField = tField
+    while finish:
 
-    #動作を取得
-    moveAry = []
-    for j,agent in enumerate(agentAry):
-        moveAry.append(agent.select_action(agentEyeAry[j],agent.exploration))
+        #前回の結果を避ける
+        prevAgentEyeAry = agentEyeAry
+        prevTField = tField
 
-    #動作を適応、報酬を受取
-    moveAryPush = []
-    for j,move in enumerate(moveAry):
-        moveAryPush.append([j,move])
-    agentEyeAry,tField,rewardAry,finish = env.getMove(moveAryPush)
+        #動作を取得
+        moveAry = []
+        for j,agent in enumerate(agentAry):
+            moveAry.append(agent.select_action(agentEyeAry[j],agent.exploration))
 
-    #学習
-    for j,agent in enumerate(agentAry):
-        agent.store_experience(agentEyeAry[j],moveAry[j],rewardAry[j],prevAgentEyeAry[j],finish)
-        agent.experience_replay()
+        #動作を適応、報酬を受取
+        moveAryPush = []
+        for j,move in enumerate(moveAry):
+            moveAryPush.append([j,move])
+        agentEyeAry,tField,rewardAry,finish = env.getMove(moveAryPush)
 
-    #結果保存
-    print(rewardAry[0])
-    if finish:
-        print("goal!!!")
-    aa,bb = env.getAgentAry()
-    np.savetxt("result/" + str(i) + 'agentAry.csv',aa,fmt="%.0f",delimiter=",")
+        #学習
+        for j,agent in enumerate(agentAry):
+            agent.store_experience(agentEyeAry[j],moveAry[j],rewardAry[j],prevAgentEyeAry[j],finish)
+            agent.experience_replay()
+
+        #結果保存
+        print(rewardAry[0])
+        if finish:
+            print("goal!!!")
+        aa,bb = env.getAgentAry()
+        np.savetxt("result/" + str(turnCount) + 'agentAry.csv',aa,fmt="%.0f",delimiter=",")
+
+        turnCount += 1
 
     # save model
     for agent in agentAry:
