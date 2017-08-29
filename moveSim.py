@@ -75,6 +75,7 @@ class Dive:
             result.append(0)
             if self.agentAry[i][0] == self.goalAry[i][0] and self.agentAry[i][1] == self.goalAry[i][1]:
                 result[i] = 100 - self.turn
+                self.finish = True
         return result
 
     def getMove(self,moveAry):
@@ -92,18 +93,18 @@ class Dive:
                 self.agentAry[move[0]][0] -= 1
             elif move[1] % 5 == 4:
                 self.agentAry[move[0]][1] -= 1
-        for agent in agentAry:
-            if agent[0] == 100:
+        for agent in self.agentAry:
+            if agent[0] == self.fieldX:
                 agent[0] = 0
             elif agent[0] == -1:
-                agent[0] = 100
-            if agent[1] == 100:
+                agent[0] = self.fieldX
+            if agent[1] == self.fieldY:
                 agent[1] = 0
             elif agent[1] == -1:
-                agent[1] = 100
+                agent[1] = self.fieldY
         self.makeField()
         self.turn += 1
-        return (self.visionFieldAry,self.trueField,self.culcReward())
+        return (self.visionFieldAry,self.trueField,self.culcReward(),self.finish)
 
     def getAgentAry(self):
         return self.agentAry,self.goalAry

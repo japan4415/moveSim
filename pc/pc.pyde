@@ -66,7 +66,7 @@ def openFile(step):
     for i,agent in enumerate(agentAryAry[step]):
         xa = int(agent[0])
         ya = int(agent[1])
-        s = int(agent[2]) * r
+        s = int(agent[2])
     
 def draw():
     global i
@@ -86,11 +86,11 @@ def draw():
     
     background(0)
     fill(0,255,0)
-    ellipse(xa,ya,5,5)
+    ellipse(xa*5,ya*5,5,5)
     fill(255,0,0)
-    ellipse(xg,yg,5,5)
+    ellipse(xg*5,yg*5,5,5)
     fill(0,255,0,50)
-    arc(xa,ya,500,500,radians(s*r-r/2),radians(s*r+r/2))
+    arc(xa*5,ya*5,500,500,radians(s-r/2),radians(s+r/2))
     
     saveFrame("frames/" + str(step) + ".tif")
     
