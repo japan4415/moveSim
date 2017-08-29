@@ -79,7 +79,7 @@ for i in range(maxEpoch):
 
     #学習
     for j,agent in enumerate(agentAry):
-        agent.store_experience(agentEyeAry[j],moveAry[j],rewardAry[j],finish)
+        agent.store_experience(agentEyeAry[j],moveAry[j],rewardAry[j],prevAgentEyeAry[j],finish)
         agent.experience_replay()
 
     #結果保存
