@@ -80,7 +80,7 @@ class Dive:
 
     def getMove(self,moveAry):
         for move in moveAry:
-            print(move[1])
+            #print(move[1])
             if move[1] / 5 < 1:
                 self.agentAry[move[0]][2] += -1 * self.agentEyeAngle
             elif move[1] / 5 >= 2:
