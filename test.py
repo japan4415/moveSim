@@ -53,7 +53,7 @@ for i in range(agentNumber):
     agentAry.append(DQNAgent(enableAction,envName+str(i)))
 
 #環境の初期状態の取得
-agentEyeAry,tField,rewardAry,finish = getMove([[0,1]])
+agentEyeAry,tField,rewardAry,finish = env.getMove([[0,1]])
 
 #学習中に使う変数宣言
 epoch = 0
