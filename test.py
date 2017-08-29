@@ -59,7 +59,7 @@ agentEyeAry,tField,rewardAry,finish = env.getMove([[0,1]])
 epoch = 0
 
 #調整する場所
-maxEpoch = 1000
+maxEpoch = 100000
 
 for i in range(maxEpoch):
     print("epoch:" + str(i))
@@ -86,7 +86,7 @@ for i in range(maxEpoch):
 
     #結果保存
     print(rewardAry[0])
-    if rewardAry[0] >= 0:
+    if finish:
         print("goal!!!")
     aa,bb = env.getAgentAry()
     np.savetxt("result/" + str(i) + 'agentAry.csv',aa,fmt="%.0f",delimiter=",")
