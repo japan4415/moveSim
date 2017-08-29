@@ -83,7 +83,7 @@ for i in range(maxEpoch):
         agent.experience_replay()
 
     #結果保存
-    if reward[0] >= 0:
+    if rewardAry[0] >= 0:
         print("goal!!!")
     aa,bb = env.getAgentAry()
     np.savetxt("result/" + str(i) + 'agentAry.csv',aa,fmt="%.0f",delimiter=",")
