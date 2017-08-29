@@ -73,7 +73,7 @@ for i in range(maxEpoch):
 
     print("epoch:" + str(i))
 
-    while finish:
+    while not finish:
 
         #前回の結果を避ける
         prevAgentEyeAry = agentEyeAry
