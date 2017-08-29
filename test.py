@@ -62,6 +62,8 @@ epoch = 0
 maxEpoch = 1000
 
 for i in range(maxEpoch):
+    print("epoch:" + str(i))
+
     #前回の結果を避ける
     prevAgentEyeAry = agentEyeAry
     prevTField = tField
@@ -83,6 +85,7 @@ for i in range(maxEpoch):
         agent.experience_replay()
 
     #結果保存
+    print(rewardAry[0])
     if rewardAry[0] >= 0:
         print("goal!!!")
     aa,bb = env.getAgentAry()
