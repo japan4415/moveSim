@@ -97,16 +97,16 @@ class Dive:
             if agent[0] == self.fieldX:
                 print("xover")
                 print(self.agentAry)
-                agentAry[i][0] = 0
+                self.agentAry[i][0] = 0
             elif agent[0] == -1:
-                agentAry[i][0] = self.fieldX
+                self.agentAry[i][0] = self.fieldX
             if agent[1] == self.fieldY:
                 print("yover")
                 print(self.agentAry)
-                agentAry[i][1] = 0
+                self.agentAry[i][1] = 0
             elif agent[1] == -1:
-                agentAry[i][1] = self.fieldY
-            print(agentAry[i])
+                self.agentAry[i][1] = self.fieldY
+            print(self.agentAry[i])
         self.makeField()
         self.turn += 1
         return (self.visionFieldAry,self.trueField,self.culcReward(),self.finish)
