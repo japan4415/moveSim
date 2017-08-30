@@ -95,10 +95,14 @@ class Dive:
                 self.agentAry[move[0]][1] -= 1
         for agent in self.agentAry:
             if agent[0] == self.fieldX:
+                print("xover")
+                print(self.agentAry)
                 agent[0] = 0
             elif agent[0] == -1:
                 agent[0] = self.fieldX
             if agent[1] == self.fieldY:
+                print("yover")
+                print(self.agentAry)
                 agent[1] = 0
             elif agent[1] == -1:
                 agent[1] = self.fieldY
