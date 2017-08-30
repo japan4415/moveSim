@@ -83,7 +83,7 @@ class Dive:
             #print(move[1])
             if move[1] / 5 < 1:
                 self.agentAry[move[0]][2] += -1 * self.agentEyeAngle
-            elif move[1] / 5 >= 2:
+            elif move[1] / 5 >= 1:
                 self.agentAry[move[0]][2] += self.agentEyeAngle
             if move[1] % 5 == 1:
                 self.agentAry[move[0]][0] += 1
