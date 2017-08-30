@@ -96,7 +96,7 @@ for i in range(maxEpoch):
             agent.experience_replay()
 
         #結果保存
-        print(rewardAry[0])
+        #print(rewardAry[0])
         if finish:
             print("goal!!!")
         aa,bb = env.getAgentAry()
