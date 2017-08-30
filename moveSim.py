@@ -103,9 +103,9 @@ class Dive:
             elif agent[1] == -1:
                 self.agentAry[i][1] = self.fieldY - 1
             if agent[2] > 360:
-                self.agentAry[2] -= 360
+                self.agentAry[i][2] -= 360
             elif agent[2] < -360:
-                self.agentAry[2] += 360
+                self.agentAry[i][2] += 360
             print(self.agentAry[i])
         self.makeField()
         self.turn += 1
