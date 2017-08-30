@@ -99,13 +99,13 @@ class Dive:
                 print(self.agentAry)
                 self.agentAry[i][0] = 0
             elif agent[0] == -1:
-                self.agentAry[i][0] = self.fieldX
+                self.agentAry[i][0] = self.fieldX - 1
             if agent[1] == self.fieldY:
                 print("yover")
                 print(self.agentAry)
                 self.agentAry[i][1] = 0
             elif agent[1] == -1:
-                self.agentAry[i][1] = self.fieldY
+                self.agentAry[i][1] = self.fieldY - 1
             print(self.agentAry[i])
         self.makeField()
         self.turn += 1
