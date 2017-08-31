@@ -99,6 +99,7 @@ for i in range(maxEpoch):
         #print(rewardAry[0])
         if finish:
             print("goal!!!")
+            print(rewardAry)
         aa,bb = env.getAgentAry()
         np.savetxt("result/" + str(turnCount) + 'agentAry.csv',aa,fmt="%.0f",delimiter=",")
 

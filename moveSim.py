@@ -72,7 +72,7 @@ class Dive:
     def culcReward(self):
         result = []
         for i in range(self.agentNumber):
-            result.append(-10000)
+            result.append(-100000)
             if self.agentAry[i][0] == self.goalAry[i][0] and self.agentAry[i][1] == self.goalAry[i][1]:
                 result[i] = -0.1 * self.turn
                 self.finish = True
