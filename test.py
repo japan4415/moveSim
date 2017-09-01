@@ -7,6 +7,7 @@ from dqn_agent import DQNAgent
 
 shutil.rmtree("result")
 os.mkdir("result")
+os.mkdir("result/past")
 
 envName = "test"
 
@@ -97,11 +98,16 @@ for i in range(maxEpoch):
 
         #結果保存
         #print(rewardAry[0])
+        aa,bb = env.getAgentAry()
+        np.savetxt("result/" + str(turnCount) + 'agentAry.csv',aa,fmt="%.0f",delimiter=",")
         if finish:
             print("goal!!!")
             print(rewardAry)
-        aa,bb = env.getAgentAry()
-        np.savetxt("result/" + str(turnCount) + 'agentAry.csv',aa,fmt="%.0f",delimiter=",")
+            shutil.rmtree("result/past")
+            os.mkdir("result/past")
+            fileNameList = os.listdir('./result')
+            for fileName in fileNameList:
+                shutil.move(fileName,'result/past/')
 
         turnCount += 1
 
