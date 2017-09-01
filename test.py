@@ -7,7 +7,7 @@ from dqn_agent import DQNAgent
 
 shutil.rmtree("result")
 os.mkdir("result")
-os.mkdir("result/past")
+os.makedirs("result/past")
 
 envName = "test"
 
@@ -104,7 +104,7 @@ for i in range(maxEpoch):
             print("goal!!!")
             print(rewardAry)
             shutil.rmtree("result/past")
-            os.mkdir("result/past")
+            os.makedirs("result/past")
             fileNameList = os.listdir('./result')
             for fileName in fileNameList:
                 shutil.move(fileName,'result/past/')
